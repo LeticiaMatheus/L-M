@@ -1,0 +1,111 @@
+// MODELO — NÃO SUBSTITUA O SEU CODE.GS ATUAL SE ELE JÁ ESTÁ FUNCIONANDO.
+// Mantenha SHEET_ID e ADMIN_TOKEN privados no Apps Script.
+// Este arquivo é apenas uma referência para reconstrução caso necessário.
+
+const SHEET_ID = "COLOQUE_O_ID_DA_SUA_PLANILHA";
+const ADMIN_TOKEN = "COLOQUE_SEU_TOKEN_PRIVADO";
+const SHEET_NAME = "Presentes";
+
+function json(data) {
+  return ContentService.createTextOutput(JSON.stringify(data)).setMimeType(ContentService.MimeType.JSON);
+}
+
+function getSheet() {
+  const spreadsheet = SpreadsheetApp.openById(SHEET_ID);
+  const sheet = spreadsheet.getSheetByName(SHEET_NAME);
+  if (!sheet) throw new Error('Aba "Presentes" não encontrada.');
+  return sheet;
+}
+
+function encontrarLinhaPorId(sheet, id) {
+  const ultimaLinha = sheet.getLastRow();
+  if (ultimaLinha < 2) return -1;
+  const ids = sheet.getRange(2, 1, ultimaLinha - 1, 1).getValues();
+  for (let i = 0; i < ids.length; i++) {
+    if (String(ids[i][0]) === String(id)) return i + 2;
+  }
+  return -1;
+}
+
+function doGet(e) {
+  try {
+    const action = e.parameter.action || "";
+    if (action === "presentes") return listarPresentes();
+    if (action === "presentes_admin") {
+      const token = e.parameter.token || "";
+      if (token !== ADMIN_TOKEN) return json({ erro: "unauthorized" });
+      return listarPresentesAdmin();
+    }
+    return json({ erro: "ação inválida" });
+  } catch (error) {
+    return json({ erro: error.message });
+  }
+}
+
+function listarPresentes() {
+  const sheet = getSheet();
+  const ultimaLinha = sheet.getLastRow();
+  if (ultimaLinha < 2) return json([]);
+  const dados = sheet.getRange(2, 1, ultimaLinha - 1, 7).getValues();
+  return json(dados.map(row => ({
+    id: String(row[0]), item: String(row[1]), categoria: String(row[2]), status: String(row[3])
+  })));
+}
+
+function listarPresentesAdmin() {
+  const sheet = getSheet();
+  const ultimaLinha = sheet.getLastRow();
+  if (ultimaLinha < 2) return json([]);
+  const dados = sheet.getRange(2, 1, ultimaLinha - 1, 7).getValues();
+  return json(dados.map(row => ({
+    id: String(row[0]), item: String(row[1]), categoria: String(row[2]), status: String(row[3]),
+    reservadoPor: String(row[4] || ""), reservadoEmail: String(row[5] || ""), dataReserva: row[6] ? String(row[6]) : ""
+  })));
+}
+
+function doPost(e) {
+  try {
+    const dados = JSON.parse(e.postData.contents);
+    if (dados.action === "reservar") return reservarPresente(dados);
+    if (dados.action === "liberar") {
+      if (dados.token !== ADMIN_TOKEN) return json({ ok: false, motivo: "unauthorized" });
+      return liberarPresente(dados.id);
+    }
+    return json({ ok: false, motivo: "ação inválida" });
+  } catch (error) {
+    return json({ ok: false, motivo: error.message });
+  }
+}
+
+function reservarPresente(dados) {
+  const id = dados.id;
+  const nome = String(dados.nome || "").trim();
+  const email = String(dados.email || "").trim();
+  if (!id || !nome || !email) return json({ ok: false, motivo: "dados_invalidos" });
+  const lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(15000);
+    const sheet = getSheet();
+    const linha = encontrarLinhaPorId(sheet, id);
+    if (linha === -1) return json({ ok: false, motivo: "item_nao_encontrado" });
+    const status = String(sheet.getRange(linha, 4).getValue());
+    if (status === "Reservado") return json({ ok: false, motivo: "ja_reservado" });
+    sheet.getRange(linha, 4, 1, 4).setValues([["Reservado", nome, email, new Date()]]);
+    SpreadsheetApp.flush();
+    return json({ ok: true });
+  } finally { lock.releaseLock(); }
+}
+
+function liberarPresente(id) {
+  if (!id) return json({ ok: false, motivo: "id_invalido" });
+  const lock = LockService.getScriptLock();
+  try {
+    lock.waitLock(15000);
+    const sheet = getSheet();
+    const linha = encontrarLinhaPorId(sheet, id);
+    if (linha === -1) return json({ ok: false, motivo: "item_nao_encontrado" });
+    sheet.getRange(linha, 4, 1, 4).setValues([["Livre", "", "", ""]]);
+    SpreadsheetApp.flush();
+    return json({ ok: true });
+  } finally { lock.releaseLock(); }
+}

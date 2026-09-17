@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leticia & Matheus | 11.12.2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:70px 24px 50px;
+    position:relative;
+  }
+  .corner{position:absolute; width:min(280px, 42vw); height:auto; opacity:0.9;}
+  .corner.tl{top:0;left:0;}
+  .corner.br{bottom:0;right:0; transform:rotate(180deg);}
+  .monogram-bg{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-54%);
+    font-family:'Playfair Display',serif; font-style:italic; font-weight:500;
+    font-size:min(38vw, 460px); color:var(--mocha); opacity:0.05; line-height:1;
+    z-index:0; pointer-events:none; user-select:none;
+  }
+  .content{position:relative; z-index:1; display:flex; flex-direction:column; align-items:center;}
+  .eyebrow{
+    letter-spacing:5px; text-transform:uppercase; font-size:11px; color:var(--mocha);
+    margin-bottom:22px; opacity:0; animation:riseIn .8s ease forwards .1s;
+  }
+  .eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:28px;height:1px;background:var(--rose);vertical-align:middle;margin:0 10px 3px;}
+  h1{
+    font-family:'Playfair Display',serif; font-weight:600; font-size:clamp(44px,9vw,96px);
+    margin:0; line-height:1; color:var(--ink); opacity:0; animation:riseIn .9s ease forwards .3s;
+  }
+  .amp{display:block; font-style:italic; font-weight:500; color:var(--rose); font-size:0.42em; margin:2px 0;}
+  .date-line{
+    margin-top:26px; font-size:15px; letter-spacing:4px; color:var(--mocha-dk);
+    opacity:0; animation:riseIn .8s ease forwards .5s;
+  }
+  .flourish-hero{width:200px; margin:32px 0; opacity:0; animation:riseIn .8s ease forwards .6s;}
+  .verse-block{max-width:540px; padding:0 30px; opacity:0; animation:riseIn .8s ease forwards .75s;}
+  .quote-mark{font-family:'Playfair Display',serif; font-size:56px; color:var(--rose); line-height:0; display:block; margin-bottom:10px; opacity:0.7;}
+  .verse{font-family:'Playfair Display',serif; font-style:italic; font-weight:500; font-size:19px; line-height:1.75; color:var(--ink); margin:0 0 10px;}
+  .verse-ref{font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--rose); margin-bottom:46px;}
+  .countdown{display:flex; align-items:center; margin-bottom:52px; opacity:0; animation:riseIn .8s ease forwards .9s;}
+  .countdown .unit{display:flex; flex-direction:column; align-items:center; width:88px;}
+  .countdown .num{font-family:'Playfair Display',serif; font-size:40px; font-weight:600; color:var(--mocha-dk); display:block; font-variant-numeric:tabular-nums;}
+  .countdown .label{font-size:10px; letter-spacing:2.5px; text-transform:uppercase; color:var(--rose); margin-top:6px;}
+  .countdown .sep{font-family:'Playfair Display',serif; font-size:28px; color:var(--blush); margin:0 6px; align-self:flex-start; margin-top:2px;}
+  .cta{display:inline-flex; gap:16px; flex-wrap:wrap; justify-content:center; opacity:0; animation:riseIn .8s ease forwards 1.05s;}
+  .scroll-cue{position:absolute; bottom:22px; left:50%; transform:translateX(-50%); width:1px; height:46px; background:linear-gradient(var(--rose), transparent); opacity:0.6;}
+  @keyframes riseIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+  @media (max-width:460px){
+    .countdown .unit{width:66px;} .countdown .num{font-size:28px;} .corner{width:38vw;} .verse{font-size:16px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="ativo">Início</a>
+  <a href="presentes.html">Lista de presentes</a>
+</nav>
+
+<div class="hero">
+
+  <svg class="corner tl" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.9">
+      <ellipse cx="40" cy="45" rx="34" ry="26" fill="#E9D2C6" transform="rotate(-18 40 45)"/>
+      <ellipse cx="68" cy="30" rx="26" ry="20" fill="#C9A48D" transform="rotate(12 68 30)"/>
+      <ellipse cx="20" cy="80" rx="22" ry="17" fill="#FADEE6" transform="rotate(30 20 80)"/>
+      <ellipse cx="85" cy="70" rx="16" ry="12" fill="#9C8272" opacity="0.55" transform="rotate(-10 85 70)"/>
+      <path d="M0 130 Q 60 90 130 0" stroke="#C9A48D" stroke-width="1" fill="none" opacity="0.5"/>
+      <circle cx="105" cy="20" r="5" fill="#9C8272"/>
+      <circle cx="118" cy="42" r="3" fill="#C9A48D"/>
+    </g>
+  </svg>
+
+  <svg class="corner br" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g opacity="0.9">
+      <ellipse cx="40" cy="45" rx="34" ry="26" fill="#E9D2C6" transform="rotate(-18 40 45)"/>
+      <ellipse cx="68" cy="30" rx="26" ry="20" fill="#C9A48D" transform="rotate(12 68 30)"/>
+      <ellipse cx="20" cy="80" rx="22" ry="17" fill="#FADEE6" transform="rotate(30 20 80)"/>
+      <ellipse cx="85" cy="70" rx="16" ry="12" fill="#9C8272" opacity="0.55" transform="rotate(-10 85 70)"/>
+      <path d="M0 130 Q 60 90 130 0" stroke="#C9A48D" stroke-width="1" fill="none" opacity="0.5"/>
+      <circle cx="105" cy="20" r="5" fill="#9C8272"/>
+      <circle cx="118" cy="42" r="3" fill="#C9A48D"/>
+    </g>
+  </svg>
+
+  <div class="monogram-bg">LM</div>
+
+  <div class="content">
+    <div class="eyebrow">Nosso casamento</div>
+
+    <h1>Leticia<span class="amp">&amp;</span>Matheus</h1>
+    <div class="date-line">11 DE DEZEMBRO DE 2026</div>
+
+    <svg class="flourish-hero" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 10 C 40 10, 60 2, 100 10 C 140 18, 160 10, 200 10" stroke="#C9A48D" stroke-width="1" fill="none"/>
+      <circle cx="100" cy="10" r="4" fill="#9C8272"/>
+    </svg>
+
+    <div class="verse-block">
+      <span class="quote-mark">&ldquo;</span>
+      <p class="verse">E, acima de tudo isto, esteja o amor, que é o vínculo da perfeição.</p>
+      <div class="verse-ref">Colossenses 3 : 14</div>
+    </div>
+
+    <div class="countdown" id="countdown">
+      <div class="unit"><span class="num" id="cd-dias">00</span><span class="label">Dias</span></div>
+      <span class="sep">:</span>
+      <div class="unit"><span class="num" id="cd-horas">00</span><span class="label">Horas</span></div>
+      <span class="sep">:</span>
+      <div class="unit"><span class="num" id="cd-min">00</span><span class="label">Min</span></div>
+      <span class="sep">:</span>
+      <div class="unit"><span class="num" id="cd-seg">00</span><span class="label">Seg</span></div>
+    </div>
+
+    <div class="cta">
+      <a href="presentes.html" class="btn btn-primary">Ver lista de presentes</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue"></div>
+</div>
+
+<footer class="site-footer">Leticia &amp; Matheus · 11.12.2026</footer>
+
+<script src="js/countdown.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin | Leticia & Matheus</title>
+<meta name="robots" content="noindex, nofollow">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="page-header admin-header">
+  <div class="eyebrow">Área privada</div>
+  <h1>Painel de presentes</h1>
+  <p>Gerencie as reservas do casamento.</p>
+</header>
+
+<main class="container admin-main">
+  <div class="admin-empty-state">
+    <span class="admin-empty-heart">♡</span>
+    <h2>Acesso reservado aos noivos</h2>
+    <p>Entre para visualizar e liberar os presentes reservados.</p>
+    <button type="button" class="btn btn-primary" id="abrir-admin-login">Entrar no painel</button>
+  </div>
+
+  <div id="loading-presentes" class="loading oculto">Carregando...</div>
+  <table class="admin-tabela" id="tabela-presentes" style="display:none;">
+    <thead>
+      <tr><th>Item</th><th>Categoria</th><th>Status</th><th>Reservado por</th><th>E-mail</th><th>Ação</th></tr>
+    </thead>
+    <tbody id="tbody-presentes"></tbody>
+  </table>
+  <div class="msg erro oculto" id="msg-erro" role="alert">Não foi possível carregar os dados.</div>
+</main>
+
+<!-- Modal de acesso administrativo -->
+<div class="admin-modal-overlay oculto" id="admin-login-overlay" aria-hidden="true">
+  <div class="admin-modal" role="dialog" aria-modal="true" aria-labelledby="admin-modal-title">
+    <button type="button" class="admin-modal-close" id="admin-modal-close" aria-label="Fechar">×</button>
+    <div class="admin-modal-ornament">♡</div>
+    <div class="eyebrow">Acesso reservado</div>
+    <h2 id="admin-modal-title">Olá, noivos</h2>
+    <p class="admin-modal-text">Digite o token de administrador para acessar a lista de presentes.</p>
+
+    <div class="admin-field">
+      <label for="admin-token-input">Token de acesso</label>
+      <div class="admin-token-wrap">
+        <input type="password" id="admin-token-input" autocomplete="off" placeholder="Digite seu token">
+        <button type="button" id="admin-token-toggle" class="admin-token-toggle" aria-label="Mostrar token">◉</button>
+      </div>
+    </div>
+
+    <div class="admin-login-error oculto" id="admin-login-error" role="alert"></div>
+    <button type="button" class="btn btn-primary admin-login-btn" id="admin-login-btn">Entrar</button>
+    <div class="admin-login-note">Acesso exclusivo para os responsáveis pelo convite.</div>
+  </div>
+</div>
+
+<footer class="site-footer">Área privada · Leticia &amp; Matheus</footer>
+
+<script src="js/config.js"></script>
+<script src="js/admin.js?v=4"></script>
+</body>
+</html>

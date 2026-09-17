@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de presentes | Leticia & Matheus</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html">Início</a>
+  <a href="presentes.html" class="ativo">Lista de presentes</a>
+</nav>
+
+<header class="page-header">
+  <div class="eyebrow">Presentes</div>
+  <h1>Lista de presentes</h1>
+  <p>Sua presença já é o maior presente. Se quiser nos ajudar a montar nossa casa, clique num item pra marcar que você vai trazer — assim ninguém mais repete.</p>
+  <svg class="flourish" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 10 C 40 10, 60 2, 100 10 C 140 18, 160 10, 200 10" stroke="#C9A48D" stroke-width="1" fill="none"/>
+    <circle cx="100" cy="10" r="4" fill="#9C8272"/>
+  </svg>
+</header>
+
+<div class="container container-estreito">
+  <div id="loading" class="loading">Carregando lista de presentes...</div>
+  <div class="lista-presentes-card oculto" id="lista-presentes-card"></div>
+  <div class="msg oculto" id="msg-erro" role="alert">Não conseguimos carregar a lista agora. Atualize a página em instantes.</div>
+</div>
+
+<!-- Modal de marcação -->
+<div class="modal-overlay oculto" id="modal-overlay">
+  <div class="modal-card">
+    <h3 id="modal-titulo">Marcar presente</h3>
+    <div class="field">
+      <label for="modal-nome">Seu nome</label>
+      <input type="text" id="modal-nome" placeholder="Nome completo">
+    </div>
+    <div class="field">
+      <label for="modal-email">Seu e-mail</label>
+      <input type="email" id="modal-email" placeholder="seuemail@exemplo.com">
+    </div>
+    <div class="msg oculto" id="modal-erro" role="alert"></div>
+    <div class="wizard-nav">
+      <button type="button" class="btn btn-outline" id="modal-cancelar">Cancelar</button>
+      <button type="button" class="btn btn-primary" id="modal-confirmar">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de sucesso -->
+<div class="modal-overlay oculto" id="modal-sucesso" aria-hidden="true">
+  <div class="modal-card modal-sucesso-card" role="dialog" aria-modal="true" aria-labelledby="sucesso-titulo">
+    <button type="button" class="modal-fechar" id="sucesso-fechar" aria-label="Fechar">×</button>
+    <div class="sucesso-coracao">♡</div>
+    <div class="eyebrow">Com gratidão</div>
+    <h3 id="sucesso-titulo">Presente reservado!</h3>
+    <p class="sucesso-texto">Agradecemos de coração por escolher um presente e fazer parte deste momento tão importante para nós.</p>
+    <p class="sucesso-item" id="sucesso-item"></p>
+    <p class="sucesso-presenca">Sua presença será uma alegria para nós neste dia tão especial.</p>
+    <div class="sucesso-assinatura">Letícia &amp; Matheus</div>
+    <button type="button" class="btn btn-primary sucesso-btn" id="sucesso-ok">Fechar</button>
+  </div>
+</div>
+
+<footer class="site-footer">Leticia &amp; Matheus · 11.12.2026</footer>
+
+<script src="js/config.js"></script>
+<script src="js/presentes.js"></script>
+</body>
+</html>
