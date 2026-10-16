@@ -56,6 +56,76 @@
   @keyframes riseIn{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
   @media (max-width:460px){
     .countdown .unit{width:66px;} .countdown .num{font-size:28px;} .corner{width:38vw;} .verse{font-size:16px;}
+
+
+    
+.local-casamento {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  animation: riseIn .8s ease forwards .65s;
+}
+
+.local-casamento .local-titulo {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rose);
+}
+
+.local-casamento .local-igreja {
+  font-family: 'Playfair Display', serif;
+  font-size: 21px;
+  color: var(--ink);
+}
+
+.local-casamento .local-endereco {
+  font-size: 13px;
+  line-height: 1.8;
+  color: var(--mocha-dk);
+  max-width: 320px;
+}
+
+.local-casamento .local-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 5px;
+  padding: 9px 16px;
+  border: 1px solid var(--rose);
+  border-radius: 30px;
+  color: var(--mocha-dk);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 1px;
+  transition: background .25s ease, color .25s ease;
+}
+
+.local-casamento .local-link:hover {
+  background: var(--rose);
+  color: white;
+}
+
+.local-casamento .local-link svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 460px) {
+  .local-casamento .local-igreja {
+    font-size: 19px;
+  }
+
+  .local-casamento .local-endereco {
+    font-size: 12px;
+    padding: 0 12px;
+  }
+}
+
   }
 </style>
 </head>
@@ -99,6 +169,35 @@
 
     <h1>Leticia<span class="amp">&amp;</span>Matheus</h1>
     <div class="date-line">11 DE DEZEMBRO DE 2026</div>
+    
+<div class="local-casamento">
+  <span class="local-titulo">Cerimônia</span>
+
+  <div class="local-igreja">Igreja Amor Infinito</div>
+
+  <div class="local-endereco">
+    Rua Geraldo José Vieira, 292<br>
+    Citrolândia · Betim – MG
+  </div>
+
+  <a
+    class="local-link"
+    href="https://www.google.com/maps/search/?api=1&query=Igreja+Amor+Infinito%2C+Rua+Geraldo+Jos%C3%A9+Vieira%2C+292%2C+Citrol%C3%A2ndia%2C+Betim%2C+MG"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Abrir localização da Igreja Amor Infinito no Google Maps"
+  >
+    <svg viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="1.6"
+      stroke-linecap="round" stroke-linejoin="round"
+      aria-hidden="true">
+      <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+      <circle cx="12" cy="10" r="2.5"/>
+    </svg>
+    Ver localização no mapa
+  </a>
+</div>
+
 
     <svg class="flourish-hero" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0 10 C 40 10, 60 2, 100 10 C 140 18, 160 10, 200 10" stroke="#C9A48D" stroke-width="1" fill="none"/>
